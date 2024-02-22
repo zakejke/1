@@ -1,0 +1,121 @@
+﻿<Window x:Class="ttest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ttest"
+        mc:Ignorable="d"       
+        Background="Gray"     
+        Title="MainWindow" Height="485" Width="800">
+
+    <Window.Resources>
+        <DataTemplate x:Key="PointTemplate">
+            <Ellipse Width="10" Height="10" Fill="Red"
+                 Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"/>
+
+        </DataTemplate>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.Resources>
+
+            <DataTemplate x:Key="PointTemplate">
+                <Ellipse Width="10" Height="10" Fill="Red"
+                         Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"/>
+            </DataTemplate>
+        </Grid.Resources>
+
+
+        <ItemsControl ItemsSource="{Binding Points}"
+                      ItemTemplate="{StaticResource PointTemplate}" Width="400" Height="470">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas Background="LightGray" Width="420" Height="420"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+
+
+        <StackPanel HorizontalAlignment="Left" Width="195">
+            <TextBox
+                Name="xTextBox"
+                Width="130" 
+                Height="20"
+                Margin="5"/>
+            <TextBox 
+                Name="yTextBox" 
+                Width="130" 
+                Height="20"
+                Margin="5" />
+
+
+
+            <Button 
+                Click="Button_Click"
+                Width="64" 
+                Height="20" 
+                Content="Рассчитать" 
+                Margin="5"/>
+            <Button 
+                Click="Button_Save"
+                Width="101" 
+                Height="20" 
+                Content="Сохранить новый" 
+                Margin="5"/>
+            <UniformGrid Columns="2" >
+
+                <Button 
+                    
+                FontSize="10"
+                Content="Загрузить файл"
+                Click="Button_Load_Click"           
+                Width="93"/>
+
+                <Button 
+                    FontSize="10"
+                Content="Сохранить пакетно" 
+                Width="93" Click="Button_Click_2"/>
+
+                <Button
+                    FontSize="10"
+                Content="Добавить другой Ф" 
+                Width="93" Click="Button_Click_3"/>
+
+            </UniformGrid>
+
+            <ListBox 
+                Name="pointsListBox"
+                Width="71" 
+                Height="115"
+                Margin="5"
+                Background="Gray"
+                HorizontalAlignment="Left" />
+
+
+            <UniformGrid>
+                <Button 
+                Content="Отобразить"
+                Margin="5"
+                Width="69"
+                Height="21"
+                HorizontalAlignment="Left" 
+                Click="AddButton_click"/>
+            </UniformGrid>
+        </StackPanel>
+
+        <StackPanel Margin="200,10,180,10"   >
+            <Canvas 
+                
+                x:Name="pointCanvas" Height="405" Width="405" >
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Xy.png" TileMode="None"/>
+                </Canvas.Background>
+            </Canvas>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
+
